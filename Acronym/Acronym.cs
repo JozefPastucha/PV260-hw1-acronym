@@ -10,7 +10,7 @@ namespace Acronym
      */
     public static class Acronym
     {
-        private static char[] WORD_DIVIDERS =
+        private static readonly char[] WordDividers =
         {
             ' ',
             '-',
@@ -32,7 +32,7 @@ namespace Acronym
                 return sentence;
             }
 
-            var sentenceSplit = sentence.Split(WORD_DIVIDERS, StringSplitOptions.RemoveEmptyEntries);
+            var sentenceSplit = sentence.Split(WordDividers, StringSplitOptions.RemoveEmptyEntries);
             return string.Join(String.Empty, sentenceSplit.Select(word => word[0].ToString().ToUpper()));
         }
     }
