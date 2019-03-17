@@ -3,14 +3,21 @@ using System.Linq;
 
 namespace Acronym
 {
+    /*
+     * For omitting articles, prepositions or conjunctions, replacing "and" with & I would add
+     * boolean parameters for the Create method, so the user could choose which parts of speech
+     * he wants to omit.
+     */
     public static class Acronym
     {
-        private static char[] wordSeparators =
+        private static char[] WORD_DIVIDERS =
         {
             ' ',
             '-',
             '–',
             '—'
+            //expect space after tilde, slash, comma or dot
+            //don't expect underscore in a text
         };
 
     public static string Create(string sentence)
@@ -25,8 +32,8 @@ namespace Acronym
                 return sentence;
             }
 
-            var s = sentence.Split(wordSeparators, StringSplitOptions.RemoveEmptyEntries);
-            return string.Join(String.Empty, s.Select(item => item[0].ToString().ToUpper()));
+            var sentenceSplit = sentence.Split(WORD_DIVIDERS, StringSplitOptions.RemoveEmptyEntries);
+            return string.Join(String.Empty, sentenceSplit.Select(word => word[0].ToString().ToUpper()));
         }
     }
 }
