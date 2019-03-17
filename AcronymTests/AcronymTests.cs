@@ -12,5 +12,12 @@ namespace AcronymTests
             var ex = Assert.Throws<ArgumentNullException>(() => Acronym.Acronym.Create(null));
             Assert.That(ex.ParamName, Is.EqualTo("sentence"));
         }
+
+        [Test]
+        public void InputSentenceIsEmpty()
+        {
+            var result = Acronym.Acronym.Create("");
+            Assert.That(result, Is.Empty);
+        }
     }
 }

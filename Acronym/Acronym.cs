@@ -11,6 +11,11 @@ namespace Acronym
                 throw new ArgumentNullException(nameof(sentence));
             }
 
+            if (sentence == "")
+            {
+                return sentence;
+            }
+
             return sentence;
         }
     }
