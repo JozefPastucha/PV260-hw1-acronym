@@ -1,18 +1,16 @@
+using System;
+using Acronym;
 using NUnit.Framework;
 
 namespace AcronymTests
 {
     public class AcronymTests
     {
-        [SetUp]
-        public void Setup()
-        {
-        }
-
         [Test]
-        public void Test1()
+        public void InputSentenceIsNull()
         {
-            Assert.Pass();
+            var ex = Assert.Throws<ArgumentNullException>(() => Acronym.Acronym.Create(null));
+            Assert.That(ex.ParamName, Is.EqualTo("sentence"));
         }
     }
 }
